@@ -1,0 +1,639 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZSO_OB_OVP_SRV/$metadata">
+		<edmx:Include Alias="Main" Namespace="ZSO_OB_OVP_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SO_OBD.annotations.Main_Annot.ZSO_OB_OVP_SRV">
+			<!--<Annotations Target="Main.ZC_OpenPR_QCType">-->
+			<!--	<Annotation Term="UI.Chart" Qualifier="Chart_OpenPR">-->
+			<!--		<Record Type="UI.ChartDefinitionType">-->
+			<!--			<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>-->
+			<!--			<PropertyValue Property="Measures">-->
+			<!--				<Collection>-->
+			<!--					<PropertyPath>OpenPRStatusCount</PropertyPath>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="MeasureAttributes">-->
+			<!--				<Collection>-->
+			<!--					<Record Type="UI.ChartMeasureAttributeType">-->
+			<!--						<PropertyValue Property="Measure" PropertyPath="OpenPRStatusCount"/>-->
+			<!--						<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>-->
+			<!--					</Record>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="Dimensions">-->
+			<!--				<Collection>-->
+			<!--					<PropertyPath>OpenPRStatus</PropertyPath>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="DimensionAttributes">-->
+			<!--				<Collection>-->
+			<!--					<Record Type="UI.ChartDimensionAttributeType">-->
+			<!--						<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>-->
+			<!--						<PropertyValue Property="Dimension" PropertyPath="OpenPRStatus"/>-->
+			<!--					</Record>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="Title" String=" "/>-->
+			<!--		</Record>-->
+			<!--	</Annotation>-->
+			<!--	<Annotation Term="UI.KPI" Qualifier="KPI_OpenPR">-->
+			<!--		<Record Type="UI.KPIType">-->
+			<!--			<PropertyValue Property="SelectionVariant">-->
+			<!--				<Record Type="UI.SelectionVariantType"/>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="DataPoint">-->
+			<!--				<Record Type="UI.DataPointType">-->
+			<!--					<PropertyValue Property="Value" Path="OpenPRStatusCount"/>-->
+			<!--				</Record>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="Detail">-->
+			<!--				<Record Type="UI.KPIDetailType">-->
+			<!--					<PropertyValue Property="DefaultPresentationVariant">-->
+			<!--						<Record Type="UI.PresentationVariantType">-->
+			<!--							<PropertyValue Property="Visualizations">-->
+			<!--								<Collection>-->
+			<!--									<AnnotationPath>@UI.Chart#Chart_OpenPR</AnnotationPath>-->
+			<!--								</Collection>-->
+			<!--							</PropertyValue>-->
+			<!--						</Record>-->
+			<!--					</PropertyValue>-->
+			<!--				</Record>-->
+			<!--			</PropertyValue>-->
+			<!--		</Record>-->
+			<!--	</Annotation>-->
+			<!--</Annotations>-->
+			<!--<Annotations Target="Main.ZC_OpenPO_QCType">-->
+			<!--	<Annotation Term="UI.Chart" Qualifier="Chart_OpenPO">-->
+			<!--		<Record Type="UI.ChartDefinitionType">-->
+			<!--			<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>-->
+			<!--			<PropertyValue Property="Measures">-->
+			<!--				<Collection>-->
+			<!--					<PropertyPath>StatusCount</PropertyPath>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="MeasureAttributes">-->
+			<!--				<Collection>-->
+			<!--					<Record Type="UI.ChartMeasureAttributeType">-->
+			<!--						<PropertyValue Property="Measure" PropertyPath="StatusCount"/>-->
+			<!--						<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>-->
+			<!--					</Record>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="Dimensions">-->
+			<!--				<Collection>-->
+			<!--					<PropertyPath>Status</PropertyPath>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="DimensionAttributes">-->
+			<!--				<Collection>-->
+			<!--					<Record Type="UI.ChartDimensionAttributeType">-->
+			<!--						<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>-->
+			<!--						<PropertyValue Property="Dimension" PropertyPath="Status"/>-->
+			<!--					</Record>-->
+			<!--				</Collection>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="Title" String=" "/>-->
+			<!--		</Record>-->
+			<!--	</Annotation>-->
+			<!--	<Annotation Term="UI.KPI" Qualifier="KPI_OpenPO">-->
+			<!--		<Record Type="UI.KPIType">-->
+			<!--			<PropertyValue Property="SelectionVariant">-->
+			<!--				<Record Type="UI.SelectionVariantType"/>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="DataPoint">-->
+			<!--				<Record Type="UI.DataPointType">-->
+			<!--					<PropertyValue Property="Value" Path="StatusCount"/>-->
+			<!--				</Record>-->
+			<!--			</PropertyValue>-->
+			<!--			<PropertyValue Property="Detail">-->
+			<!--				<Record Type="UI.KPIDetailType">-->
+			<!--					<PropertyValue Property="DefaultPresentationVariant">-->
+			<!--						<Record Type="UI.PresentationVariantType">-->
+			<!--							<PropertyValue Property="Visualizations">-->
+			<!--								<Collection>-->
+			<!--									<AnnotationPath>@UI.Chart#Chart_OpenPO</AnnotationPath>-->
+			<!--								</Collection>-->
+			<!--							</PropertyValue>-->
+			<!--						</Record>-->
+			<!--					</PropertyValue>-->
+			<!--				</Record>-->
+			<!--			</PropertyValue>-->
+			<!--		</Record>-->
+			<!--	</Annotation>-->
+			<!--</Annotations>-->
+			<Annotations Target="Main.ZC_SO_OB_OpenPR_OVPType">
+				<!--<Annotation Term="UI.SelectionVariant" Qualifier="Test">-->
+				<!--	<Record Type="UI.SelectionVariantType"> </Record>-->
+				<!--</Annotation>-->
+				<!--<Annotation Term="UI.KPI">-->
+				<!--	<Record Type="UI.KPIType">-->
+				<!--<PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#Test"/>-->
+				<!--		<PropertyValue Property="DataPoint" Path="@UI.DataPoint#DP_OpenPR"/>-->
+				<!--	</Record>-->
+				<!--</Annotation>-->
+				<Annotation Term="UI.DataPoint" Qualifier="DP_OpenPR_ProcessingStatus">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="ProcessingStatus"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification" Qualifier="ID_OpenPR_Intent">
+					<Collection>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="PurchaseRequisition"/>
+							<PropertyValue Property="Action" String="centralManagement"/>
+							<PropertyValue Property="RequiresContext" Bool="true"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ID"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="MaterialGroup"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProcessingStatus"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="DP_OpenPRStatus">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="OpenPRStatusCodeText"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="DP_OpenPR">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="ValueFormat">
+							<Record>
+								<PropertyValue Property="NumberOfFractionalDigits" Int="0"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Value" Path="OpenPRStatusCount"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PV_OpenPR">
+					<Record>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.Chart#Chart_OpenPR</AnnotationPath>
+								<AnnotationPath>@UI.DataPoint#DP_OpenPR</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="Chart_OpenPR">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String=" "/>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="OpenPRStatusCount"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>OpenPRStatusCount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="OpenPRStatusCodeText"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>OpenPRStatusCodeText</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZC_SO_OB_POSpend_OVPType">
+				<Annotation Term="UI.Identification" Qualifier="ID_PurchasingSpend">
+					<Collection/>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="DP_PurchasingSpend">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="ValueFormat">
+							<Record>
+								<PropertyValue Property="NumberOfFractionalDigits" Int="0"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Value" Path="NetValue"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PV_PurchasingSpend">
+					<Record>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.Chart#Chart_PurchasingSpend</AnnotationPath>
+								<AnnotationPath>@UI.DataPoint#DP_PurchasingSpend</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="Chart_PurchasingSpend">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String=" "/>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="NetValue"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>NetValue</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="MaterialGroupName"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>MaterialGroupName</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZC_SO_OB_OpenPO_OVPType">
+				<Annotation Term="UI.DataPoint" Qualifier="DP_OpenPO">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="ValueFormat">
+							<Record>
+								<PropertyValue Property="NumberOfFractionalDigits" Int="0"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Value" Path="StatusCount"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PV_OpenPO">
+					<Record>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.Chart#Chart_OpenPO</AnnotationPath>
+								<AnnotationPath>@UI.DataPoint#DP_OpenPO</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="Chart_OpenPO">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String=" "/>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="StatusCount"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>StatusCount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="StatusCodeText"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>StatusCodeText</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZC_SO_OB_POContractSpend_OVPType">
+				<Annotation Term="UI.DataPoint" Qualifier="DP_OffContractSpend">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="ValueFormat">
+							<Record>
+								<PropertyValue Property="NumberOfFractionalDigits" Int="0"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Value" Path="NetValue"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PV_OffContractSpend">
+					<Record>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.Chart#Chart_OffContractSpend</AnnotationPath>
+								<AnnotationPath>@UI.DataPoint#DP_OffContractSpend</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="Chart_OffContractSpend">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String=" "/>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="NetOffContractValue"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="NetContractValue"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>NetOffContractValue</PropertyPath>
+								<PropertyPath>NetContractValue</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="MaterialGroupName"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>MaterialGroupName</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/ColumnStacked"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZC_SO_OB_OpenPR_OVPType/OpenPRStatusCode">
+				<Annotation Term="Common.Label" String="LEGEND"/>
+			</Annotations>
+			<Annotations Target="Main.MyOpenReleaseDocument">
+				<Annotation Term="UI.FieldGroup" Qualifier="order">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value">
+										<Apply Function="odata.concat">
+											<Path>NetValue</Path>
+											<Path>DocumentCurrency</Path>
+										</Apply>
+									</PropertyValue>
+									<PropertyValue Property="Label" String="{@i18n&gt;NET_VALUE}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Buyer"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;BUYER}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value">
+										<Apply Function="odata.concat">
+											<Path>ReleaseStep</Path>
+											<String>/</String>
+											<Path>CurrentStepNumber</Path>
+										</Apply>
+									</PropertyValue>
+									<PropertyValue Property="Label" String="{@i18n&gt;RELEASE_STEP_/_NUMBER}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="DeliveryDate"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;DELIVERY_DATE}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value">
+										<Apply Function="odata.concat">
+											<Path>PurchaseDocumentType</Path>
+											<String>/</String>
+											<Path>PaymentTerm</Path>
+											<String>/</String>
+											<Path>IncoTerm</Path>
+										</Apply>
+									</PropertyValue>
+									<PropertyValue Property="Label" String="{@i18n&gt;DOCUMENT_TYPE/_PAYMENT_TERM/_INCO_TERM}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="{@i18n&gt;PURCHASE_ORDER}"/>
+						<PropertyValue Property="TypeNamePlural" String="{@i18n&gt;PURCHASE_ORDERS}"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="PurchaseOrder"/>
+								<PropertyValue Property="Label" String="{@i18n&gt;PURCHASE_ORDER}"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="Supplier"/>
+								<PropertyValue Property="Label" String="Supplier"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ImageUrl" String="sap-icon://sales-quote"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification" Qualifier="card">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Supplier"/>
+							<Annotation Term="UI.Hidden" Bool="true"/>
+						</Record>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+							<PropertyValue Property="Action" String="open_release_wdp"/>
+						</Record>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="ZSO_OB_OVP_SRV.ZSO_OB_OVP_SRV_Entities/ReleasePurchaseOrder"/>
+							<PropertyValue Property="Label" String="Release"/>
+						</Record>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="ZSO_OB_OVP_SRV.ZSO_OB_OVP_SRV_Entities/RejectPurchaseOrder"/>
+							<PropertyValue Property="Label" String="Reject"/>
+							<PropertyValue Property="Determining" Bool="true"/>
+							<PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Negative"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#order"/>
+							<Annotation Term="UI.IsSummary"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.Identification" Qualifier="header">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="PurchaseOrder"/>
+						</Record>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+							<PropertyValue Property="Action" String="my_open_releases_wdp"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/ForwardPurchaseOrder/Comments">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/ForwardPurchaseOrder/User">
+				<Annotation Term="Common.ValueListMapping">
+					<Record Type="Common.ValueListMappingType">
+						<PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="User"/>
+									<PropertyValue Property="ValueListProperty" String="Supplier"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/ReleasePurchaseOrder">
+				<Annotation Term="Common.IsActionCritical" Bool="true"/>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/ForwardPurchaseOrder">
+				<Annotation Term="Common.IsActionCritical" Bool="true"/>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/ForwardPurchaseOrder/Supplier">
+				<Annotation Term="Common.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Supplier"/>
+						<PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/>
+									<PropertyValue Property="ValueListProperty" String="Supplier"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="SupplierName"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Country"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="CityName"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="PostalCode"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Region"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/RejectPurchaseOrder/RejectionReason">
+				<Annotation Term="Common.ValueList">
+					<Record>
+						<PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/>
+									<PropertyValue Property="ValueListProperty" String="Supplier"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="SupplierName"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Country"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="CityName"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="PostalCode"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Region"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/RejectPurchaseOrder/Supplier">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/>
+									<PropertyValue Property="ValueListProperty" String="Supplier"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="SupplierName"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Country"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="CityName"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="PostalCode"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Region"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Common.Label" String="Supplier1"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

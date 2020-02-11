@@ -1,0 +1,186 @@
+{
+	"_version": "1.7.0",
+	"start_url": "start.html",
+	"sap.app": {
+		"id": "com.evonik.sc.purchasing.operationalbuyerovp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{app_title}}",
+		"description": "{{app_description}}",
+		"dataSources": {
+			"Main": {
+				"uri": "/sap/opu/odata/sap/ZSO_OB_OVP_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"annotations": [
+						"Main_Annot",
+						"oData_Annot"
+					],
+					"localUri": "localService/Main/metadata.xml"
+				}
+			},
+			"oData_Annot": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSO_OB_OVP_ANNO_MDL',Version='0001')/$value/",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/Main/ZSO_OB_OVP_ANNO_MDL.xml"
+				}
+			},
+			"Main_Annot": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/Main_Annot.xml",
+				"settings": {
+					"localUri": "annotations/Main_Annot.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ovp": {},
+				"sap.suite.ui.generic.template": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"@i18n": {
+				"preload": true,
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"Main": {
+				"dataSource": "Main",
+				"settings": {
+					"defaultCountMode": "Inline"
+				}
+			}
+		},
+		"extends": {
+			"extensions": {
+				"sap.ui.controllerExtensions": {
+					"sap.ovp.app.Main": {
+						"controllerName": "com.evonik.sc.purchasing.operationalbuyerovp.ext.custom"
+					}
+				},
+				"sap.ui.viewExtensions": {
+					"sap.ovp.app.Main": {
+						"SmartFilterBarGlobalActionExtension": {
+							"className": "sap.ui.core.Fragment",
+							"fragmentName": "com.evonik.sc.purchasing.operationalbuyerovp.ext.customAction",
+							"type": "XML"
+						},
+						"SmartFilterBarControlConfigurationExtension|ZC_SO_OB_Filter_OVPType": {
+							"className": "sap.ui.core.Fragment",
+							"fragmentName": "com.evonik.sc.purchasing.operationalbuyerovp.ext.customFilter",
+							"type": "XML"
+						}
+					}
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.ovp": {
+		"globalFilterModel": "Main",
+		"globalFilterEntityType": "ZC_SO_OB_Filter_OVPType",
+		"enableLiveFilter": true,
+		"containerLayout": "resizable",
+		"considerAnalyticalParameters": true,
+		"refreshIntervalInMinutes": 10,
+		"cards": {
+			"Card_OpenPR": {
+				"model": "Main",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{Card_OpenPR_title}}",
+					"subTitle": "{{Card_OpenPR_subTitle}}",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Chart_OpenPR",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PV_OpenPR",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ID_OpenPR_Intent",
+					"entitySet": "ZC_SO_OB_OpenPR_OVP",
+					"navigation": "headerNav"
+				}
+			},
+			"Card_POSpend": {
+				"model": "Main",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{Card_POSpend_title}}",
+					"subTitle": "{{Card_POSpend_subTitle}}",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Chart_PurchasingSpend",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PV_PurchasingSpend",
+					"entitySet": "ZC_SO_OB_POSpend_OVP"
+				}
+			},
+			"Card_OpenPO": {
+				"model": "Main",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{Card_OpenPO_title}}",
+					"subTitle": "{{Card_OpenPO_subTitle}}",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Chart_OpenPO",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PV_OpenPO",
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#DP_OpenPO",
+					"entitySet": "ZC_SO_OB_OpenPO_OVP"
+				}
+			},
+			"Card_OffContractSpend": {
+				"model": "Main",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{Card_OffContractSpend_title}}",
+					"subTitle": "{{Card_OffContractSpend_subTitle}}",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Chart_OffContractSpend",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PV_OffContractSpend",
+					"entitySet": "ZC_SO_OB_POContractSpend_OVP"
+				}
+			},
+			"card9": {
+				"model": "Main",
+				"template": "sap.ovp.cards.stack",
+				"settings": {
+					"title": "{{card_MyOpenApprovals_title}}",
+					"entitySet": "MyOpenReleaseDocuments",
+					"subTitle": "{{card_MyOpenApprovals_subTitle}}",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo",
+					"objectStreamCardsSettings": {
+						"annotationPath": "com.sap.vocabularies.UI.v1.Facets"
+					},
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#header,com.sap.vocabularies.UI.v1.Identification#card"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zso_ob_ovp/webapp",
+		"_version": "1.1.0"
+	}
+}

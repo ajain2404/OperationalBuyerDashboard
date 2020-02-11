@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:Reference
+		Uri="https://webidecp-a2928fc21.dispatcher.hana.ondemand.com/destinations/Gateway/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='R1_CLNT011')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZSO_OB_OVP_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="MyOpenReleaseDocument" sap:content-version="1">
+				<Key><PropertyRef Name="PurchaseOrder"/></Key><Property Name="PurchaseOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Version" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Version" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CurrentStepNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Cur. Nbr"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NetValue" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="2" sap:unicode="false" sap:label="Net Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DocumentCurrency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="NextReleaseStep" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Next release step"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReleaseStep" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Short Descript."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReleaseStrategy" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Rel. Strategy"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReleaseStepCount" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Nbr rel.steps"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NextUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Next agent" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreationTimeStamp" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PurchaseDocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Order Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Buyer" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DeliveryDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Delivery date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PaymentTerm" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Payt Terms"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IncoTerm" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Incoterms" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_SO_CostCenter_VHType" sap:label="Cost Center Valuehelp" sap:content-version="1">
+				<Key><PropertyRef Name="CostCenter"/><PropertyRef Name="ControllingArea"/></Key><Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase"
+					sap:label="Responsible Cost Center"/><Property Name="ControllingArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Controlling Area"/><Property Name="CostCenterName" Type="Edm.String" MaxLength="20" sap:label="Responsible Cost Center"/></EntityType>
+			<EntityType Name="ZC_SO_OB_OpenPO_OVPType" sap:semantics="aggregate" sap:label="Operational Buyer - Open PO View" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false"/><Property Name="PurchasingDocumentNumber" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Document"/><Property Name="PurchasingDocumentItemNumber" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension"
+					sap:display-format="NonNegative" sap:label="Item"/><Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Vendor"/><Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material"/><Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material Group"/><Property Name="PurchasingCategory" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. doc. category"/><Property Name="PurchasingDocumentType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Doc. Type"/><Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Group"/><Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. Organization"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Cost Center"/><Property Name="CostCenterResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension"
+					sap:display-format="UpperCase"/><Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="NonNegative"
+					sap:label="WBS Element"/><Property Name="WBSResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="User Name"/><Property Name="OrderID" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Order"/><Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Profit Center"/><Property Name="StatusCode" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="NonNegative"/><Property Name="StatusCodeText" Type="Edm.String" MaxLength="60" sap:aggregation-role="dimension" sap:label="Short Descript."/><Property Name="StatusCount" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_SO_OB_OpenPR_OVPType" sap:semantics="aggregate" sap:label="Operational Buyer - Open PR View" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false"/><Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Desired Vendor"/><Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material"/><Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material Group"/><Property Name="PurchasingCategory" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. doc. category"/><Property Name="PurchasingDocumentType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Document Type"/><Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Group"/><Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. Organization"/><Property Name="OpenPRStatusCode" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="NonNegative"/><Property Name="ProcessingStatus" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Processing status"/><Property Name="OpenPRStatusCodeText" Type="Edm.String" MaxLength="60" sap:aggregation-role="dimension" sap:label="Short Descript."/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Cost Center"/><Property Name="CostCenterResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension"
+					sap:display-format="UpperCase"/><Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="NonNegative"
+					sap:label="WBS Element"/><Property Name="WBSResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="User Name"/><Property Name="OrderID" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Order"/><Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Profit Center"/><Property Name="userName" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase"/><Property Name="OpenPRStatusCount" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_SO_OB_POContractSpend_OVPType" sap:semantics="aggregate" sap:label="Operational Buyer - PO ContractSpendView"
+				sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false"/><Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Vendor"/><Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material"/><Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material Group"/><Property Name="MaterialGroupName" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension" sap:label="Material Group Desc."/><Property Name="PurchasingCategory" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. doc. category"/><Property Name="PurchasingDocumentType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Doc. Type"/><Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Group"/><Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. Organization"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Cost Center"/><Property Name="CostCenterResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension"
+					sap:display-format="UpperCase"/><Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="NonNegative"
+					sap:label="WBS Element"/><Property Name="WBSResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="User Name"/><Property Name="OrderID" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Order"/><Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Profit Center"/><Property Name="NetOffContractValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure"
+					sap:label="Off Contract Spend" sap:filterable="false"/><Property Name="NetContractValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:label="Contract Spend"
+					sap:filterable="false"/><Property Name="NetValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:label="Net Order Value"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_SO_OB_POSpend_OVPType" sap:semantics="aggregate" sap:label="Operation Buyer - PO Spend View" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false"/><Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Vendor"/><Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material"/><Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material Group"/><Property Name="MaterialGroupName" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension" sap:label="Material Group Desc."/><Property Name="PurchasingCategory" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. doc. category"/><Property Name="PurchasingDocumentType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Doc. Type"/><Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purchasing Group"/><Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Purch. Organization"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Cost Center"/><Property Name="CostCenterResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension"
+					sap:display-format="UpperCase"/><Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="NonNegative"
+					sap:label="WBS Element"/><Property Name="WBSResponsiblePerson" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="User Name"/><Property Name="OrderID" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Order"/><Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Profit Center"/><Property Name="NetValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:label="Net Order Value"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_SO_Order_VHType" sap:label="Order Value Help" sap:content-version="1">
+				<Key><PropertyRef Name="OrderID"/></Key><Property Name="OrderID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order"/><Property Name="OrderCategory" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Order category"/><Property Name="OrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/><Property Name="OrderDescription" Type="Edm.String" MaxLength="40" sap:label="Description"/></EntityType>
+			<EntityType Name="ZC_SO_MaterialGroup_VHType" sap:label="MaterialGroup ValueHelp" sap:content-version="1">
+				<Key><PropertyRef Name="MaterialGroup"/></Key><Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:text="MaterialGroupName"
+					sap:label="Material Group"/><Property Name="MaterialGroupName" Type="Edm.String" MaxLength="50" sap:label="Material Group Desc."/></EntityType>
+			<EntityType Name="ZC_SO_Plant_VHType" sap:label="Plant Value Help" sap:content-version="1">
+				<Key><PropertyRef Name="Plant"/><PropertyRef Name="PurchasingOrganization"/></Key><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName"
+					sap:label="Plant"/><Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:text="PurchasingOrganizationName" sap:label="Purch. Organization"/><Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/><Property Name="PurchasingOrganizationName" Type="Edm.String" MaxLength="20" sap:label="Purchasing Org Name"/><Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/><Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/></EntityType>
+			<EntityType Name="ZC_SO_ProfitCenter_VHType" sap:label="ProfitCenter Value Helpp" sap:content-version="1">
+				<Key><PropertyRef Name="ProfitCenter"/></Key><Property Name="ProfitCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/><Property Name="ValidityEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To"/><Property Name="ProfitCenterName" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Profit Center Name"/></EntityType>
+			<EntityType Name="ZC_SO_PurchasingDocType_VHType" sap:label="Purchasing Document Type value help" sap:content-version="1">
+				<Key><PropertyRef Name="PurchasingDocumentType"/><PropertyRef Name="PurchasingCategory"/></Key><Property Name="PurchasingDocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Purchasing Doc. Type"/><Property Name="PurchasingCategory" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase"
+					sap:label="Purch. doc. category"/><Property Name="Description" Type="Edm.String" MaxLength="20" sap:label="Doc. Type Descript."/></EntityType>
+			<EntityType Name="ZC_SO_PurchasingGroup_VHType" sap:label="Purchasing Group Value Help" sap:content-version="1">
+				<Key><PropertyRef Name="PurchasingGroup"/></Key><Property Name="PurchasingGroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase"
+					sap:text="PurchasingGroupName" sap:label="Purchasing Group"/><Property Name="PurchasingGroupName" Type="Edm.String" MaxLength="18" sap:label="Purchasing Grp Name"/><Property Name="PurchasingGroupPhoneNumber" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Tel.no. purch. group"/><Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone"/><Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Extension"/><Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Fax number"/><Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/></EntityType>
+			<EntityType Name="ZC_SO_PurchasingOrg_VHType" sap:label="Purchasing Organisazation ValueHelp" sap:content-version="1">
+				<Key><PropertyRef Name="PurchasingOrganization"/></Key><Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:text="PurchasingOrganizationName" sap:label="Purch. Organization"/><Property Name="PurchasingOrganizationName" Type="Edm.String" MaxLength="20" sap:label="Purchasing Org Name"/><Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName"
+					sap:label="Company Code"/><Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name"/></EntityType>
+			<EntityType Name="ZC_SO_Supplier_VHType" sap:label="Supplier" sap:content-version="1">
+				<Key><PropertyRef Name="Supplier"/></Key><Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName"
+					sap:label="Vendor"/><Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:label="Text"/><Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country Key"/><Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/><Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/><Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region"/><Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization"/></EntityType>
+			<EntityType Name="ZC_SO_WBSElement_VHType" sap:label="WBS Element ValueHelp" sap:content-version="1">
+				<Key><PropertyRef Name="WBSElement"/></Key><Property Name="WBSElement" Type="Edm.String" Nullable="false" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS element"/><Property Name="WBSDescription" Type="Edm.String" MaxLength="40" sap:label="Description"/></EntityType>
+			<EntityType Name="ZC_SO_Material_VHType" sap:label="MaterialGroup ValueHelp" sap:content-version="1">
+				<Key><PropertyRef Name="Material"/><PropertyRef Name="Plant"/></Key><Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:text="MaterialName"
+					sap:label="Material"/><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material Description"/><Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/><Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/><Property Name="MaterialGroupName" Type="Edm.String" MaxLength="50" sap:label="Material Group Desc."/><Property Name="MaterialType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material Type"/><Property Name="MaterialTypeName" Type="Edm.String" MaxLength="25" sap:label="Material type descr."/></EntityType>
+			<EntityType Name="ZC_SO_OB_Filter_OVPType" sap:label="Global Filters" sap:content-version="1">
+				<Key><PropertyRef Name="Supplier"/><PropertyRef Name="Material"/><PropertyRef Name="MaterialGroup"/><PropertyRef Name="PurchasingDocumentType"/><PropertyRef Name="PurchasingGroup"/><PropertyRef Name="Plant"/><PropertyRef Name="PurchasingOrganization"/><PropertyRef Name="FixedVendor"/><PropertyRef Name="CostCenter"/><PropertyRef Name="WBSElement"/><PropertyRef Name="OrderID"/><PropertyRef Name="ProfitCenter"/></Key><Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"
+					sap:value-list="standard"/><Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material"
+					sap:value-list="standard"/><Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"
+					sap:value-list="standard"/><Property Name="PurchasingDocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Document Type" sap:value-list="standard"/><Property Name="PurchasingGroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase"
+					sap:label="Purchasing Group" sap:value-list="standard"/><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"
+					sap:value-list="standard"/><Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Purch. Organization" sap:value-list="standard"/><Property Name="FixedVendor" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Fixed vendor"
+					sap:value-list="standard"/><Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"
+					sap:value-list="standard"/><Property Name="WBSElement" Type="Edm.String" Nullable="false" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element"
+					sap:value-list="standard"/><Property Name="OrderID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order"
+					sap:value-list="standard"/><Property Name="ProfitCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"
+					sap:value-list="standard"/><NavigationProperty Name="to_CostCenter" Relationship="ZSO_OB_OVP_SRV.assoc_FB4C60BAF4584C891173338F4A0227FF"
+					FromRole="FromRole_assoc_FB4C60BAF4584C891173338F4A0227FF" ToRole="ToRole_assoc_FB4C60BAF4584C891173338F4A0227FF"/><NavigationProperty Name="to_Material" Relationship="ZSO_OB_OVP_SRV.assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"
+					FromRole="FromRole_assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00" ToRole="ToRole_assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"/><NavigationProperty Name="to_MaterialGroup" Relationship="ZSO_OB_OVP_SRV.assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"
+					FromRole="FromRole_assoc_2B69F46F374BF6ADB3D10F4C3D821BAB" ToRole="ToRole_assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"/><NavigationProperty Name="to_Order" Relationship="ZSO_OB_OVP_SRV.assoc_B91806DE3511598597C4B53FAA54CDF4"
+					FromRole="FromRole_assoc_B91806DE3511598597C4B53FAA54CDF4" ToRole="ToRole_assoc_B91806DE3511598597C4B53FAA54CDF4"/><NavigationProperty Name="to_Plant" Relationship="ZSO_OB_OVP_SRV.assoc_D785C72FFD0685A8123054A31BB28AC7"
+					FromRole="FromRole_assoc_D785C72FFD0685A8123054A31BB28AC7" ToRole="ToRole_assoc_D785C72FFD0685A8123054A31BB28AC7"/><NavigationProperty Name="to_ProfitCenter" Relationship="ZSO_OB_OVP_SRV.assoc_ED01BB991BFD06E1DC31840EF94240AE"
+					FromRole="FromRole_assoc_ED01BB991BFD06E1DC31840EF94240AE" ToRole="ToRole_assoc_ED01BB991BFD06E1DC31840EF94240AE"/><NavigationProperty Name="to_PurchasingDocumentType" Relationship="ZSO_OB_OVP_SRV.assoc_D87950E845AA3A779E851A7B1A06B5A3"
+					FromRole="FromRole_assoc_D87950E845AA3A779E851A7B1A06B5A3" ToRole="ToRole_assoc_D87950E845AA3A779E851A7B1A06B5A3"/><NavigationProperty Name="to_PurchasingGroup" Relationship="ZSO_OB_OVP_SRV.assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"
+					FromRole="FromRole_assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9" ToRole="ToRole_assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"/><NavigationProperty Name="to_PurchasingOrganization" Relationship="ZSO_OB_OVP_SRV.assoc_F7E833371487737B4A3FB4449C515ABD"
+					FromRole="FromRole_assoc_F7E833371487737B4A3FB4449C515ABD" ToRole="ToRole_assoc_F7E833371487737B4A3FB4449C515ABD"/><NavigationProperty Name="to_Supplier" Relationship="ZSO_OB_OVP_SRV.assoc_4610683196668F78BE83EA2E64DB28D8"
+					FromRole="FromRole_assoc_4610683196668F78BE83EA2E64DB28D8" ToRole="ToRole_assoc_4610683196668F78BE83EA2E64DB28D8"/><NavigationProperty Name="to_WBSElement" Relationship="ZSO_OB_OVP_SRV.assoc_AB81696B46F1E6D6734EAD6B8178A742"
+					FromRole="FromRole_assoc_AB81696B46F1E6D6734EAD6B8178A742" ToRole="ToRole_assoc_AB81696B46F1E6D6734EAD6B8178A742"/></EntityType>
+			<Association Name="assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_Material_VHType" Multiplicity="1" Role="ToRole_assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"/></Association>
+			<Association Name="assoc_2B69F46F374BF6ADB3D10F4C3D821BAB" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_MaterialGroup_VHType" Multiplicity="0..1" Role="ToRole_assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"/></Association>
+			<Association Name="assoc_B91806DE3511598597C4B53FAA54CDF4" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_B91806DE3511598597C4B53FAA54CDF4"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_Order_VHType" Multiplicity="0..1" Role="ToRole_assoc_B91806DE3511598597C4B53FAA54CDF4"/></Association>
+			<Association Name="assoc_D785C72FFD0685A8123054A31BB28AC7" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_D785C72FFD0685A8123054A31BB28AC7"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_Plant_VHType" Multiplicity="0..1" Role="ToRole_assoc_D785C72FFD0685A8123054A31BB28AC7"/></Association>
+			<Association Name="assoc_ED01BB991BFD06E1DC31840EF94240AE" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_ED01BB991BFD06E1DC31840EF94240AE"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_ProfitCenter_VHType" Multiplicity="0..1" Role="ToRole_assoc_ED01BB991BFD06E1DC31840EF94240AE"/></Association>
+			<Association Name="assoc_D87950E845AA3A779E851A7B1A06B5A3" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_D87950E845AA3A779E851A7B1A06B5A3"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_PurchasingDocType_VHType" Multiplicity="0..1" Role="ToRole_assoc_D87950E845AA3A779E851A7B1A06B5A3"/></Association>
+			<Association Name="assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_PurchasingGroup_VHType" Multiplicity="0..1" Role="ToRole_assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"/></Association>
+			<Association Name="assoc_F7E833371487737B4A3FB4449C515ABD" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_F7E833371487737B4A3FB4449C515ABD"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_PurchasingOrg_VHType" Multiplicity="0..1" Role="ToRole_assoc_F7E833371487737B4A3FB4449C515ABD"/></Association>
+			<Association Name="assoc_4610683196668F78BE83EA2E64DB28D8" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_4610683196668F78BE83EA2E64DB28D8"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_Supplier_VHType" Multiplicity="0..1" Role="ToRole_assoc_4610683196668F78BE83EA2E64DB28D8"/></Association>
+			<Association Name="assoc_AB81696B46F1E6D6734EAD6B8178A742" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_AB81696B46F1E6D6734EAD6B8178A742"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_WBSElement_VHType" Multiplicity="0..1" Role="ToRole_assoc_AB81696B46F1E6D6734EAD6B8178A742"/></Association>
+			<Association Name="assoc_FB4C60BAF4584C891173338F4A0227FF" sap:content-version="1"><End Type="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" Multiplicity="1" Role="FromRole_assoc_FB4C60BAF4584C891173338F4A0227FF"/><End Type="ZSO_OB_OVP_SRV.ZC_SO_CostCenter_VHType" Multiplicity="0..1" Role="ToRole_assoc_FB4C60BAF4584C891173338F4A0227FF"/></Association>
+			<EntityContainer Name="ZSO_OB_OVP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="MyOpenReleaseDocuments" EntityType="ZSO_OB_OVP_SRV.MyOpenReleaseDocument" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZC_SO_CostCenter_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_CostCenter_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_OB_OpenPO_OVP" EntityType="ZSO_OB_OVP_SRV.ZC_SO_OB_OpenPO_OVPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZC_SO_OB_OpenPR_OVP" EntityType="ZSO_OB_OVP_SRV.ZC_SO_OB_OpenPR_OVPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZC_SO_OB_POContractSpend_OVP" EntityType="ZSO_OB_OVP_SRV.ZC_SO_OB_POContractSpend_OVPType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZC_SO_OB_POSpend_OVP" EntityType="ZSO_OB_OVP_SRV.ZC_SO_OB_POSpend_OVPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZC_SO_Order_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_Order_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_MaterialGroup_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_MaterialGroup_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_Plant_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_Plant_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_ProfitCenter_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_ProfitCenter_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_PurchasingDocType_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_PurchasingDocType_VHType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_PurchasingGroup_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_PurchasingGroup_VHType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_PurchasingOrg_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_PurchasingOrg_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_Supplier_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_Supplier_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_WBSElement_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_WBSElement_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_Material_VH" EntityType="ZSO_OB_OVP_SRV.ZC_SO_Material_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZC_SO_OB_Filter_OVP" EntityType="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/>
+				<AssociationSet Name="assoc_D87950E845AA3A779E851A7B1A06B5A3" Association="ZSO_OB_OVP_SRV.assoc_D87950E845AA3A779E851A7B1A06B5A3"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_D87950E845AA3A779E851A7B1A06B5A3"/><End EntitySet="ZC_SO_PurchasingDocType_VH" Role="ToRole_assoc_D87950E845AA3A779E851A7B1A06B5A3"/></AssociationSet>
+				<AssociationSet Name="assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9" Association="ZSO_OB_OVP_SRV.assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"/><End EntitySet="ZC_SO_PurchasingGroup_VH" Role="ToRole_assoc_B7193CBDA89BE5B64755B5CF5E5FB1C9"/></AssociationSet>
+				<AssociationSet Name="assoc_2B69F46F374BF6ADB3D10F4C3D821BAB" Association="ZSO_OB_OVP_SRV.assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"/><End EntitySet="ZC_SO_MaterialGroup_VH" Role="ToRole_assoc_2B69F46F374BF6ADB3D10F4C3D821BAB"/></AssociationSet>
+				<AssociationSet Name="assoc_D785C72FFD0685A8123054A31BB28AC7" Association="ZSO_OB_OVP_SRV.assoc_D785C72FFD0685A8123054A31BB28AC7"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_D785C72FFD0685A8123054A31BB28AC7"/><End EntitySet="ZC_SO_Plant_VH" Role="ToRole_assoc_D785C72FFD0685A8123054A31BB28AC7"/></AssociationSet>
+				<AssociationSet Name="assoc_4610683196668F78BE83EA2E64DB28D8" Association="ZSO_OB_OVP_SRV.assoc_4610683196668F78BE83EA2E64DB28D8"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_4610683196668F78BE83EA2E64DB28D8"/><End EntitySet="ZC_SO_Supplier_VH" Role="ToRole_assoc_4610683196668F78BE83EA2E64DB28D8"/></AssociationSet>
+				<AssociationSet Name="assoc_B91806DE3511598597C4B53FAA54CDF4" Association="ZSO_OB_OVP_SRV.assoc_B91806DE3511598597C4B53FAA54CDF4"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_B91806DE3511598597C4B53FAA54CDF4"/><End EntitySet="ZC_SO_Order_VH" Role="ToRole_assoc_B91806DE3511598597C4B53FAA54CDF4"/></AssociationSet>
+				<AssociationSet Name="assoc_ED01BB991BFD06E1DC31840EF94240AE" Association="ZSO_OB_OVP_SRV.assoc_ED01BB991BFD06E1DC31840EF94240AE"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_ED01BB991BFD06E1DC31840EF94240AE"/><End EntitySet="ZC_SO_ProfitCenter_VH" Role="ToRole_assoc_ED01BB991BFD06E1DC31840EF94240AE"/></AssociationSet>
+				<AssociationSet Name="assoc_F7E833371487737B4A3FB4449C515ABD" Association="ZSO_OB_OVP_SRV.assoc_F7E833371487737B4A3FB4449C515ABD"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_F7E833371487737B4A3FB4449C515ABD"/><End EntitySet="ZC_SO_PurchasingOrg_VH" Role="ToRole_assoc_F7E833371487737B4A3FB4449C515ABD"/></AssociationSet>
+				<AssociationSet Name="assoc_AB81696B46F1E6D6734EAD6B8178A742" Association="ZSO_OB_OVP_SRV.assoc_AB81696B46F1E6D6734EAD6B8178A742"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_AB81696B46F1E6D6734EAD6B8178A742"/><End EntitySet="ZC_SO_WBSElement_VH" Role="ToRole_assoc_AB81696B46F1E6D6734EAD6B8178A742"/></AssociationSet>
+				<AssociationSet Name="assoc_FB4C60BAF4584C891173338F4A0227FF" Association="ZSO_OB_OVP_SRV.assoc_FB4C60BAF4584C891173338F4A0227FF"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_FB4C60BAF4584C891173338F4A0227FF"/><End EntitySet="ZC_SO_CostCenter_VH" Role="ToRole_assoc_FB4C60BAF4584C891173338F4A0227FF"/></AssociationSet>
+				<AssociationSet Name="assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00" Association="ZSO_OB_OVP_SRV.assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_SO_OB_Filter_OVP" Role="FromRole_assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"/><End EntitySet="ZC_SO_Material_VH" Role="ToRole_assoc_ADF3A4FDD04A8AB33DFC09BA6B163E00"/></AssociationSet>
+				<FunctionImport Name="ReleasePurchaseOrder" ReturnType="ZSO_OB_OVP_SRV.MyOpenReleaseDocument" EntitySet="MyOpenReleaseDocuments"
+					m:HttpMethod="POST" sap:label="Release" sap:action-for="ZSO_OB_OVP_SRV.MyOpenReleaseDocument"><Parameter Name="PurchaseOrder" Type="Edm.String" Mode="In" MaxLength="10"/></FunctionImport>
+				<FunctionImport Name="ForwardPurchaseOrder" ReturnType="ZSO_OB_OVP_SRV.MyOpenReleaseDocument" EntitySet="MyOpenReleaseDocuments"
+					m:HttpMethod="POST" sap:label="Forward" sap:action-for="ZSO_OB_OVP_SRV.MyOpenReleaseDocument"><Parameter Name="Comments" Type="Edm.String" Mode="In" MaxLength="50"/><Parameter Name="Supplier" Type="Edm.String" Mode="In" MaxLength="10"/><Parameter Name="PurchaseOrder" Type="Edm.String" Mode="In" MaxLength="10"/></FunctionImport>
+				<FunctionImport Name="RejectPurchaseOrder" ReturnType="ZSO_OB_OVP_SRV.MyOpenReleaseDocument" EntitySet="MyOpenReleaseDocuments"
+					m:HttpMethod="POST" sap:label="Reject" sap:action-for="ZSO_OB_OVP_SRV.MyOpenReleaseDocument"><Parameter Name="RejectionReason" Type="Edm.String" Mode="In"/><Parameter Name="PurchaseOrder" Type="Edm.String" Mode="In" MaxLength="10"/></FunctionImport>
+			</EntityContainer>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Supplier"/><PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/><PropertyValue Property="ValueListProperty" String="Supplier"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SupplierName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Country"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CityName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PostalCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Region"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="MaterialGroup ValueHelp"/><PropertyValue Property="CollectionPath" String="ZC_SO_Material_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Material"/><PropertyValue Property="ValueListProperty" String="Material"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/><PropertyValue Property="ValueListProperty" String="Plant"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaterialName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PlantName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaterialGroup"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaterialGroupName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaterialType"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaterialTypeName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/MaterialGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="MaterialGroup ValueHelp"/><PropertyValue Property="CollectionPath" String="ZC_SO_MaterialGroup_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="MaterialGroup"/><PropertyValue Property="ValueListProperty" String="MaterialGroup"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaterialGroupName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/PurchasingDocumentType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Purchasing Document Type value help"/><PropertyValue Property="CollectionPath" String="ZC_SO_PurchasingDocType_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingDocumentType"/><PropertyValue Property="ValueListProperty" String="PurchasingDocumentType"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PurchasingCategory"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/PurchasingGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Purchasing Group Value Help"/><PropertyValue Property="CollectionPath" String="ZC_SO_PurchasingGroup_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingGroup"/><PropertyValue Property="ValueListProperty" String="PurchasingGroup"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PurchasingGroupName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PurchasingGroupPhoneNumber"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PhoneNumber"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PhoneNumberExtension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="FaxNumber"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="EmailAddress"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/Plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Plant Value Help"/><PropertyValue Property="CollectionPath" String="ZC_SO_Plant_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/><PropertyValue Property="ValueListProperty" String="Plant"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingOrganization"/><PropertyValue Property="ValueListProperty" String="PurchasingOrganization"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PlantName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PurchasingOrganizationName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CityName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PostalCode"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/PurchasingOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Purchasing Organisazation ValueHelp"/><PropertyValue Property="CollectionPath" String="ZC_SO_PurchasingOrg_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingOrganization"/><PropertyValue Property="ValueListProperty" String="PurchasingOrganization"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PurchasingOrganizationName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CompanyCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CompanyCodeName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/FixedVendor" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Supplier"/><PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/><PropertyValue Property="ValueListProperty" String="Supplier"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SupplierName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Country"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CityName"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PostalCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Region"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/CostCenter" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Cost Center Valuehelp"/><PropertyValue Property="CollectionPath" String="ZC_SO_CostCenter_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="CostCenter"/><PropertyValue Property="ValueListProperty" String="CostCenter"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ControllingArea"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CostCenterName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/WBSElement" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="WBS Element ValueHelp"/><PropertyValue Property="CollectionPath" String="ZC_SO_WBSElement_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="WBSElement"/><PropertyValue Property="ValueListProperty" String="WBSElement"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="WBSDescription"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/OrderID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Order Value Help"/><PropertyValue Property="CollectionPath" String="ZC_SO_Order_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OrderID"/><PropertyValue Property="ValueListProperty" String="OrderID"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OrderCategory"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OrderType"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OrderDescription"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZSO_OB_OVP_SRV.ZC_SO_OB_Filter_OVPType/ProfitCenter" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="ProfitCenter Value Helpp"/><PropertyValue Property="CollectionPath" String="ZC_SO_ProfitCenter_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ProfitCenter"/><PropertyValue Property="ValueListProperty" String="ProfitCenter"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ValidityEndDate"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ProfitCenterName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations><atom:link rel="self"
+				href="https://webidecp-a2928fc21.dispatcher.hana.ondemand.com/destinations/Gateway/sap/opu/odata/sap/ZSO_OB_OVP_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-a2928fc21.dispatcher.hana.ondemand.com/destinations/Gateway/sap/opu/odata/sap/ZSO_OB_OVP_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
