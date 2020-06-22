@@ -353,6 +353,11 @@
 				</Annotation>
 				<Annotation Term="UI.Chart" Qualifier="Chart_OffContractSpend">
 					<Record Type="UI.ChartDefinitionType">
+						<!--<PropertyValue Property="Dimensions">-->
+						<!--	<Collection>-->
+						<!--		<PropertyPath>MaterialGroupName</PropertyPath>-->
+						<!--	</Collection>-->
+						<!--</PropertyValue>-->
 						<PropertyValue Property="Title" String=" "/>
 						<PropertyValue Property="MeasureAttributes">
 							<Collection>
@@ -375,14 +380,9 @@
 						<PropertyValue Property="DimensionAttributes">
 							<Collection>
 								<Record Type="UI.ChartDimensionAttributeType">
-									<PropertyValue Property="Dimension" PropertyPath="MaterialGroupName"/>
+									<PropertyValue Property="Dimension" PropertyPath="Spend"/>
 									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
 								</Record>
-							</Collection>
-						</PropertyValue>
-						<PropertyValue Property="Dimensions">
-							<Collection>
-								<PropertyPath>MaterialGroupName</PropertyPath>
 							</Collection>
 						</PropertyValue>
 						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/ColumnStacked"/>
@@ -471,13 +471,14 @@
 						</Record>
 						<Record Type="UI.DataFieldForAction">
 							<PropertyValue Property="Action" String="ZSO_OB_OVP_SRV.ZSO_OB_OVP_SRV_Entities/ReleasePurchaseOrder"/>
-							<PropertyValue Property="Label" String="Release"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;action_release}"/>
+							<PropertyValue Property="Determining" Bool="true"/>
 						</Record>
 						<Record Type="UI.DataFieldForAction">
 							<PropertyValue Property="Action" String="ZSO_OB_OVP_SRV.ZSO_OB_OVP_SRV_Entities/RejectPurchaseOrder"/>
-							<PropertyValue Property="Label" String="Reject"/>
 							<PropertyValue Property="Determining" Bool="true"/>
 							<PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Negative"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;action_reject}"/>
 						</Record>
 					</Collection>
 				</Annotation>
@@ -566,6 +567,7 @@
 				</Annotation>
 			</Annotations>
 			<Annotations Target="Main.ZSO_OB_OVP_SRV_Entities/RejectPurchaseOrder/RejectionReason">
+				<Annotation Term="Common.Label" String="Reason"/>
 				<Annotation Term="Common.ValueList">
 					<Record>
 						<PropertyValue Property="CollectionPath" String="ZC_SO_Supplier_VH"/>
