@@ -1,0 +1,15 @@
+steps:
+
+# Only perform publish steps for development and master branch triggered builds
+- ${{ if or(eq(variables['Build.SourceBranch'], 'refs/heads/development'), eq(variables['Build.SourceBranch'], 'refs/heads/master')) }}:
+  - task: Application security testing@2020
+    inputs:
+      CheckmarxService: 'Checkmarx'
+      projectName: 'checkmarxsaptest-$(Build.SourceBranchName)'
+      preset: 'Webapp_Frontend'
+      fullTeamName: 'CxServer/SP/Evonik/Development'
+      incScan: true
+      syncMode: false
+      comment: 'CxSast Scan'
+      folderExclusion: '.che, icon, i18n'
+    displayName: 'checkmarx scan'
