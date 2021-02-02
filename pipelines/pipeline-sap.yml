@@ -1,15 +1,33 @@
-steps:
+# Trigger on development or master automatically
+trigger:
+- development
+- master
 
-# Only perform publish steps for development and master branch triggered builds
-- ${{ if or(eq(variables['Build.SourceBranch'], 'refs/heads/development'), eq(variables['Build.SourceBranch'], 'refs/heads/master')) }}:
-  - task: Application security testing@2020
-    inputs:
-      CheckmarxService: 'Checkmarx'
-      projectName: 'checkmarxsaptest-$(Build.SourceBranchName)'
-      preset: 'Webapp_Frontend'
-      fullTeamName: 'CxServer/SP/Evonik/Development'
-      incScan: true
-      syncMode: false
-      comment: 'CxSast Scan'
-      folderExclusion: '.che, icon, i18n'
-    displayName: 'checkmarx scan'
+steps:
+- task: Application security testing@2020
+  inputs:
+    CheckmarxService: 'Checkmarx-SCP'
+    projectName: 'so.dashboard.OperationalBuyer-$(Build.SourceBranchName)'
+    preset: 'Webapp_Frontend'
+    fullTeamName: 'CxServer\SP\Evonik\Development'
+    incScan: true
+    syncMode: false
+    comment: 'CxSast Scan'
+    folderExclusion: 'pipelines, test, i18n, localService'
+    fileExtension: '!**/*.md, !**/*.txt, !**/*.gitignore, !**/*.json'
+  displayName: 'checkmarx scan'
+
+  
+- task: Application security testing@2020
+  inputs:
+    enableSastScan: false
+    enableDependencyScan: true
+    dependencyServerURL: 'CheckmarxSCA-SCP'
+    dependencyTenant: 'Evonik'
+    projectName: 'so.dashboard.OperationalBuyer-$(Build.SourceBranchName)'
+    fullTeamName: 'CxServer\SP\Evonik\Development'
+    dependencyWebAppURL: 'https://eu.sca.checkmarx.net'
+    dependencyAccessControlURL: 'https://eu.platform.checkmarx.net'
+    incScan: true
+    syncMode: false
+  displayName: 'checkmarx sca scan'
