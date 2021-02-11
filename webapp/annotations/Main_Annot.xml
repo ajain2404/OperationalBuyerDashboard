@@ -148,7 +148,6 @@
 						<Record Type="UI.DataFieldForIntentBasedNavigation">
 							<PropertyValue Property="SemanticObject" String="PurchaseRequisition"/>
 							<PropertyValue Property="Action" String="centralManagement"/>
-							<PropertyValue Property="RequiresContext" Bool="true"/>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="ID"/>
