@@ -9,7 +9,7 @@ steps:
     CheckmarxService: 'Checkmarx-SCP'
     projectName: 'so.dashboard.OperationalBuyer-$(Build.SourceBranchName)'
     preset: 'Webapp_Frontend'
-    fullTeamName: 'CxServer\SP\Evonik\Development'
+    fullTeamName: 'CxServer\SP\Evonik\SAP'
     incScan: true
     syncMode: false
     comment: 'CxSast Scan'
@@ -25,7 +25,7 @@ steps:
     dependencyServerURL: 'CheckmarxSCA-SCP'
     dependencyTenant: 'Evonik'
     projectName: 'so.dashboard.OperationalBuyer-$(Build.SourceBranchName)'
-    fullTeamName: 'CxServer\SP\Evonik\Development'
+    fullTeamName: 'CxServer\SP\Evonik\SAP'
     dependencyWebAppURL: 'https://eu.sca.checkmarx.net'
     dependencyAccessControlURL: 'https://eu.platform.checkmarx.net'
     incScan: true
